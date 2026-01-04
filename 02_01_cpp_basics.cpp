@@ -119,25 +119,26 @@ int main(){
     //         cout << "invalid";
     // }
     
-    int arr[5];
-    cin >> arr[0] >> arr[1] >> arr[2] >> arr[3] >> arr[4];
+    // int arr[5];
+    // cin >> arr[0] >> arr[1] >> arr[2] >> arr[3] >> arr[4];
 
-    arr[3] += 10;
-    cout << arr[3];
+    // arr[3] += 10;
+    // cout << arr[3];
 
-    // 2D array
+    // // 2D array
 
-    int arr[3][5];
-    arr[1][3] = 78;
-    cout << arr[1][2];
+    // int arr1[3][5];
+    // arr1[1][3] = 78;
+    // cout << arr1[1][2];
 
-    string s = "striver";
-    int len = s.size();
-    cout << s[2];
-    s[len - 3] = 'd'; 
-    cout << s[len - 1];
-    
+    // string s = "striver";
+    // int len = s.size();
+    // cout << s[2];
+    // s[len - 3] = 'd'; 
+    // cout << s[len - 1];
 
-
+    for(int i = 1; i<=10; i = i+1){
+        cout << "MIGOOO" << endl;
+    }
     return 0;
 }
