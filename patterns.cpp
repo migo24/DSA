@@ -182,18 +182,39 @@ for(int i=0; i<n; i++){
             for(int j=n-i-1; j>0; j--){
                 cout << " ";
             }
-            int x=65;
-            for(int j=0; j<=i; j++){
-                cout << char(x);
-                x++;
-            }
-            for(int j=0; j<i; j++){
-                cout << char(x-2);
-                x--;
+            int x = 65;
+            for(int j=0; j<(2*i)+1; j++){
+                if(j<i){
+                    cout << char(x);
+                    x++;
+                }
+                else{
+                    cout << char(x);
+                    x--;
+                }
             }
             cout << endl;
+            
         }
     }
+    // void pattern17(int n) {
+    //     for(int i=0; i<n; i++){
+    //         for(int j=n-i-1; j>0; j--){
+    //             cout << " ";
+    //         }
+    //         int x=65;
+    //         for(int j=0; j<=i; j++){
+    //             cout << char(x);
+    //             x++;
+    //         }
+    //         for(int j=0; j<i; j++){
+    //             cout << char(x-2);
+    //             x--;
+    //         }
+    //         cout << endl;
+    //     }
+    // }
+    
     /*
     We can also do it like this:
 
