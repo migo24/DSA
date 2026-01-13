@@ -333,6 +333,18 @@ for(int i=0; i<n; i++){
             cout << endl;
         }
     }
+    void pattern22(int n) {
+        for(int i=0; i<(2*n)-1; i++){
+            for(int j=0; j<(2*n)-1; j++){
+                int top = i;
+                int bottom = (2*n)-2-i;
+                int left = j;
+                int right = 2*n -2 - j;
+                cout << n - min(min(top, bottom), min(left, right)) << " ";
+            }
+            cout << endl;
+        }
+    }
 };
 
 
@@ -359,6 +371,8 @@ int main(){
     cout << endl;
     s1.pattern8(n);
     cout << endl;
+    s1.pattern9(n);
+    cout << endl;
     s1.pattern10(n);
     cout << endl;
     s1.pattern11(n);
@@ -382,6 +396,8 @@ int main(){
     s1.pattern20(n);
     cout << endl;
     s1.pattern21(n);
+    cout << endl;
+    s1.pattern22(n);
 
     return 0;
 }
