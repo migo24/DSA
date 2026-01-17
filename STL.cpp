@@ -258,10 +258,68 @@ void explainVector(){
 }
 void explainList(){
     // List is also a cointainer
-    list<int> ls;
+    // pushback, erase, delete, iterator all the same as vector
+    // all of the fuctions/ methods will work here since the concept is the same
+    // 0 based indexing to n-1
+
+    // DIFFERENCE FROM VECTOR
+    // List allows you to insert at front: push_front
+
+    //push_front / emplace_front
+
+    list<int> ls = {6, 7};
+    ls.push_front(1);
+    for(auto i: ls){
+        cout << i << " ";
+    }
+    cout << endl;
+}
+void explainDeque(){
+    //A container, everything is same, behaves same as vector or list
+    // also allows push front
+    //In vectors the underlying DS is an arry, so it modifies the array, uses dynamic arrya
+
+    // BUT! FOR DEQUE WE USE A LINKED LIST!!!!!
+}
+void explainStack(){
+    //LIFO: Last In First Out: like books piled in a bucket, one on top of the other
+
+    //DOES NOT HAVE AN ITERATOR
+
+    stack<int> st;
+    st.push(1);
+    st.push(7);
+
+    cout << st.top() << " "; //7
+    st.pop(); // deletes 7 from the stack
+    cout << st.top() << " "; //1
+    st.pop(); // deletes 1 from the stack
+
+    //this line will do nothing and cause a runtime error
+
+    //cout << st.top() << " ";
+
+    // runtime error if you try to access something that is not there
+    cout << st.size() << endl;
+
+    stack<int> st1;
+    st1.push(1);
+    st1.push(3);
+    st1.push(5);
+    st1.push(4);
+    st1.push(7);
+    st1.push(2);
+    st1.push(8);
+
+    while(st1.empty() == false){
+        cout << st1.top() << " ";
+        st1.pop();
+    }
+
+    //stack has limited fuctionalities, but it is extremely useful.
 }
 
 int main(){
-    explainVector();
+    explainStack();
     return 0;
 }
