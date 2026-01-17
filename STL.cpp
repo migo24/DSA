@@ -231,8 +231,34 @@ void explainVector(){
     }
     cout << endl;
 
+    //Insertion
+
+    vector<int> anothaOne = {7, 8, 8, 6, 7};
+    for(auto i: anothaOne){
+        cout << i << " ";
+    }
+    cout << endl;
+    cout << "Inserting a 4 before 0 index (using: anothaOne.insert(anothaOne.begin(), 4);): " << endl;
+
+    anothaOne.insert(anothaOne.begin(), 4); // inser 4 before begin
+    for(auto i: anothaOne){
+        cout << i << " ";
+    }
+    cout << endl;
+
+    cout << "Inserting a 12 before 2nd index (using: anothaOne.insert(anothaOne.begin() + 2, 4);): " << endl;
+
+    anothaOne.insert(anothaOne.begin() + 2, 12); // inser 4 before begin
+    for(auto i: anothaOne){
+        cout << i << " ";
+    }
+    cout << endl;
 
 
+}
+void explainList(){
+    // List is also a cointainer
+    list<int> ls;
 }
 
 int main(){
