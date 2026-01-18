@@ -318,8 +318,158 @@ void explainStack(){
 
     //stack has limited fuctionalities, but it is extremely useful.
 }
+void explainQueue(){
+    //FIFO: First In First Out
+    //like at a ticket counter
+    queue<int> q;
+    q.push(2);
+    q.push(3);
+    q.push(6);
+    q.push(5);
+    q.push(7);
+    q.push(9);
+
+    while(q.empty()==false){
+        cout << q.front() << " ";
+        q.pop();
+    }
+
+    cout << endl;
+
+    // A way I could get the input from the user for a defined number of inputs.
+
+    queue<int> qu;
+    int x;
+    cout << "Enter the number of elements you wisht to enter into the queue: ";
+    cin >> x;
+
+    for(int i=0; i<x; i++){
+        int y;
+        cin >> y;
+        qu.push(y);
+    }
+    cout << endl;
+
+    while(qu.empty() == false){
+        cout << qu.front() << " ";
+        qu.pop();
+    }
+    cout << endl << endl;
+
+    // for unsure number of inputs:
+
+    queue<int> que;
+
+    cout << "Enter Y if you want to enter an element. Otherwise enter any other charachter: ";
+
+    char want;
+    cin >> want;
+
+    while(want=='Y'||want=='y'){
+        int x;
+        cout << "Enter the element: ";
+        cin >> x;
+        que.push(x);
+        cout << endl << "Do you want to enter another element?: ";
+        cin >> want;
+    }
+
+    // Nice. I did it myself!
+
+}
+void explainPriorityQueue(){
+    //Stores the highest element at the top
+    //underneath is a heap, which is a tree concept
+    priority_queue<int> pq;
+    pq.push(5);
+    pq.push(7);
+    pq.push(11);
+    pq.push(4);
+    pq.push(8);
+    pq.push(10);
+
+    while(pq.empty() == false){
+        cout << pq.top() << " ";
+        pq.pop();
+    }
+    cout << endl;
+
+    //you can also do it for the smallest elemet at the top with this format:
+
+    priority_queue<int, vector<int>, greater<int>> pq_min; // this is a comparator: "greater<int>": we can use it to customize our heap.
+
+    // COMPARATORS?
+
+    //minimum heap --> Internally we have a heap data structure that stores the smallest element at the top
+
+    // can do both min and max for characters and other data types also
+    pq_min.push(5);
+    pq_min.push(7);
+    pq_min.push(11);
+    pq_min.push(4);
+    pq_min.push(8);
+    pq_min.push(10);
+
+    while(pq_min.empty() == false){
+        cout << pq_min.top() << " ";
+        pq_min.pop();
+    }
+    cout << endl;
+}
+void explainSet(){
+    //set is apparenty a Data structure that only stores unique elements, in ascending order
+
+    // It has an iterator!
+
+    set<int> st;
+    st.insert(2);
+    st.insert(21);
+    st.insert(21);
+    st.insert(21);
+    st.insert(12);
+    st.insert(9);
+
+    for(auto i : st){
+        cout << i << " ";
+    }
+    cout << endl;
+
+    auto i = st.find(12); // returns an iterator to 12
+
+    if(i != st.end()){ //If find() does not find 12 it will always return the end iterator, because it will reach the element after end, and it will say, "I didnt find it"
+
+        cout << *i; // This gives the element at i --> This is wrond, cause i is an iterator, i.e an object, not an index. So I cant return the index I found the element at. Apparently. I need to go google this now.
+
+        // Do I need to write *i cause it is outside an iterator
+
+//Iterators
+// Iterators are objects that point to elements within a container
+// and provide a way to traverse through the container. They are 
+// essential for accessing and modifying elements in STL containers.
+    }
+    cout << endl;
+
+    cout << st.count(21); // returns 1 if element is there and 0 if not.
+
+    cout << endl;
+
+    st.erase(21);
+    for(auto it: st){
+        cout << it << " "; // why does writing *i instead of it print "12 12 12" ?
+    }
+    cout << endl;
+
+    auto it = st.end(); // to erase a specific location
+    it--; // this prints 2 9 and: it--; it--; print 2 12
+    st.erase(it);
+    for(auto it : st){
+        cout << it << " ";
+    }
+    cout << endl;
+}
+
 
 int main(){
-    explainStack();
+    explainSet();
     return 0;
 }
