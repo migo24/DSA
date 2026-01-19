@@ -466,10 +466,238 @@ void explainSet(){
         cout << it << " ";
     }
     cout << endl;
+
+    set<int> set1;
+    set1.insert(2);
+    set1.insert(21);
+    set1.insert(27);
+    set1.insert(7);
+    set1.insert(6);
+    set1.insert(5);
+
+    for(auto i : set1){
+        cout << i << " ";
+    }
+    cout << endl;
+    
+    auto it1 = set1.begin();
+    it1++;
+    auto it2 = set1.end();
+    it2--;
+    set1.erase(it1, it2);
+
+    
+    for(auto i : set1){
+        cout << i << " ";
+    }
+    cout << endl;
+
+    set<int> set2;
+    set2.insert(2);
+    set2.insert(21);
+    set2.insert(27);
+    set2.insert(7);
+    set2.insert(6);
+    set2.insert(5);
+
+    for(auto i : set2){
+        cout << i << " ";
+    }
+    cout << endl;
+
+    //lower bound : returns an iterator that points to an element that is >= (less than or equal to) number given
+
+    auto it3 = set2.lower_bound(3);
+    cout << *it3 << endl;
+
+    auto it4 = set2.lower_bound(291);
+    if(it4 == set2.end()){
+        cout << "end" << endl; //no star of end iterator, cause it is not a valid memory location
+    }
+
+    //returns iterator that points to an element that is greater than the number given
+    auto ite5 = set2.upper_bound(3);
+    cout << *ite5;
+}
+void explainMultiSet(){
+    // Like set, but can also store repeating elements
+    multiset<int> ms;
+    ms.insert(1);
+    ms.insert(1);
+    ms.insert(1);
+    ms.insert(1);
+    ms.insert(2);
+    ms.insert(0);
+    ms.insert(3);
+    ms.insert(21);
+    ms.insert(7);
+    ms.insert(72);
+    ms.insert(21);
+    ms.insert(21);
+
+    for(auto it : ms){
+        cout << it << " ";
+    }
+    cout << endl;
+
+    //store all the elements including the duplicates in the ascending order.
+    //But te functionalities are not same (all of them atleast)
+
+    auto ite = ms.find(1); //points to the first 1
+
+    // to erase only one 1, then:
+
+    auto itee = ms.erase(ms.find(1)); // this is cause ms.find() is an iterator pointing to a location, so it only deletes that location.
+    for(auto i: ms){
+        cout << i << " ";
+    }
+    cout << endl;
+
+    // if you erase all 1's, then
+
+    auto it = ms.erase(1);
+    for(auto it: ms){
+        cout << it << " ";
+    }
+    cout << endl;
+
+    cout << ms.count(21); // returns 3 cause there are 3 21's
+
+    //all others all the same.
+
+}
+void explainUnorderedSet(){
+    //similar to set, but no ordering
+    //but it will store unique elements
+    // all functionalities of set are applied here except lower_bound and upper_bound --> because it is not sorted, and the inner mechanisms for this are usually binary search
+
+    //has better time complexity
+    
+    unordered_set<int> us;
+    us.insert(1);
+    us.insert(7);
+    us.insert(2);
+    us.insert(14);
+    us.insert(1);
+    us.insert(5);
+    us.insert(8);
+    us.insert(19);
+    us.insert(6);
+    us.insert(6);
+
+    for(auto i: us){
+        cout << i << " ";
+    }
+    cout << endl;
+
+    auto it = us.find(14); // almost happens in a constant time complexity --> O(1), in very rare senarios, it takes O(N)
+
+    //In unordered set, in an average case, we have better search functionaity, in terms of time complexity
+
+    //Time complexity will be understood in hashing, so leave it be for the time being.
+}
+void explainMap(){
+    //unique keys, sorted order
+    //does not store duplicates
+    map<int, string> mpp; //int is key where we will store roll no. & Key can be any data type, a pair, or a vector too. same for value
+    mpp[1] = "abc"; //stored in the cocept of pairs
+    mpp[2] = "bcd";
+    mpp[1] = "dog"; // so the value pair can be chaged, the lates iteration is saved
+    mpp[3] = "cat";
+    mpp.insert({4, "Raj"});
+
+    for(auto it: mpp){
+        cout << it.first << "->" << it.second << endl; // stores according to ascending order of keys
+    }
+    cout << endl;
+
+    auto it = mpp.find(4);// it will return an iterator that will point to the location roll_no 4, this will be a key value pair
+
+    cout << (*it).first << "->" << (*it).second << endl; //map.find() is an iterator, so a *it will give us a value which has a pair (and we put it in a () cause syntax, don't look too much into it), so we get it's first.
+
+    auto i = mpp.find(5);
+    if(i==mpp.end()){
+        cout << "not found" << endl;
+    }
+
+    // same for lower bound, first key >=
+    // same for upper bound, first key >
+    //other things are same, with keys
+}
+void explainUnorderedMap(){
+    //similar to unordered set, but a map
+    //does not store anything in any order
+    //so time complexity of UOM is O(1), until and unless the data structure is huge, and there are collisions inside the map (once in a blue moon)
+    //we don't care about the ordering, we want fast search fuctionality
+    unordered_map<int, string> mpp; 
+    mpp[1] = "abc"; 
+    mpp[2] = "bcd";
+    mpp[1] = "dog";
+    mpp[3] = "cat";
+    mpp.insert({4, "Raj"});
+
+    for(auto i: mpp){
+        cout << i.first << "->" << i.second << endl ;
+    }
+    cout << endl;
+}
+void explainMultiMap(){
+    //Can have duplicates, sorts and stores according to key values,  not the pair values.
+    multimap<int, char> mpp;
+    mpp.insert({3, 'b'});
+    mpp.insert({1, 'a'});
+    mpp.insert({1, 'b'});
+    mpp.insert({1, 'a'});
+    mpp.insert({2, 'a'});
+    mpp.insert({2, 'a'});
+    mpp.insert({2, 'b'});
+
+    for(auto it: mpp){
+        cout << it.first << "->" << it.second << endl;
+    }
+    cout << endl;
+
+    // to figure out the range from the starting of 2 to the ending of two
+
+    //.equal_range() will give the range where a single element lies
+    auto it = mpp.equal_range(2); //returns a pair of iterartors (first tells us the starting place, and secon tells us the ending place)
+    for(auto i = it.first; i != it.second; i++){//i's an iterator //I have no idea why we used != like ????? what even???
+
+        // ohhh!
+        //because in map the elements are not stored in consecutive order
+
+        cout << (*i).first << "->" << (*i).second << endl;// the value at *i is a pair, for syntax, we are putting it in a bracket I guess? I dont really know what even is going on at this point
+
+        //I don't even know anymore. My brain is fried, and the library is about to close.
+    }
 }
 
+// functions and Algo's from here on out:
+
+void explainSort(){
+    int arr[5] = {6, 2, 1, 7, 8};
+
+    for(int i=0; i<5; i++){
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    sort(arr, arr+5);
+    for(int i=0; i<5; i++){
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    // if you only want to sort a range:
+
+    int arr1[5] = {6, 2, 1, 7, 8};
+    sort(arr1+1, arr1+4);
+    for (int i = 0; i<5; i++){
+        cout << arr1[i] << " ";
+    }
+}
 
 int main(){
-    explainSet();
+    explainSort();
     return 0;
 }
