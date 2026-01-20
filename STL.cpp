@@ -695,9 +695,153 @@ void explainSort(){
     for (int i = 0; i<5; i++){
         cout << arr1[i] << " ";
     }
+    cout << endl;
+
+    vector<int> vec = {6, 2, 1, 7, 8};
+    sort(vec.begin(), vec.end());
+    for(auto it: vec){
+        cout << it << " ";
+    }
+    cout << endl;
+
+    //can also do it in specific parts:
+    vector<int> vec1 = {6, 2, 1, 7, 8};
+    sort(vec.begin()+1, vec.end()-1);
+    for(auto it: vec1){
+        cout << it << " ";
+    }
+    cout << endl;
+
+
+}
+void explainAccumulate(){
+    int arr[5] = {6, 2, 1, 7, 0};
+    cout << accumulate(arr, arr+5, 0); //this starts with sum = 0, the sum becomes 16, if it was 1, the sum will start from 1 and we get 17
+}
+void explainCount(){
+    int arr[5] = {6, 2, 1, 1, 0};
+    int num = 1;
+    cout << count(arr, arr+5, num); // tells us how many times it appears
+
+}
+void explainFind(){
+    int arr[5] = {6, 2, 1, 1, 0};
+    auto it = find(arr, arr+5, 1); // points to the first 1 in the array //returs an iterator
+    cout << *it << endl;
+    auto ite = find(arr, arr+5, 8);
+    if(ite == arr+5){ //iterator pointing to the last iterator
+        cout << "not found";
+    }
+
+    //works the same for vector
+}
+void explainNextPermutation(){
+    //works for vector, str etc.
+    string str = "abc";
+    do{
+        cout << str << endl;
+    }
+    while(next_permutation(str.begin(), str.end()));
+    cout << endl;
+
+    string str1 = "bca";
+    do{
+        cout << str1 << endl;
+    }
+    while(next_permutation(str1.begin(), str1.end()));
+    cout << endl;
+
+    string str2 = "bca";
+
+    cout << "The str is: " << str2 << endl;
+    do{
+        cout << str2 << endl;
+    }
+    while(next_permutation(str2.begin(), str2.end()-1)); // or from str1.begin(), str1.begin()+2
+    cout << endl;
+}
+void explainPrevPermutation(){
+    string str2 = "cba";
+
+    cout << "The str is: " << str2 << endl;
+    do{
+        cout << str2 << endl;
+    }
+    while(prev_permutation(str2.begin(), str2.end())); // or from str1.begin(), str1.begin()+2
+    cout << endl;
+}
+void explainMaxElement(){
+    int arr[] = {7, 6, 5, 10, 9};
+    auto it = max_element(arr, arr+5); //It will always point to an iterator which is the max element
+    cout << *it << endl; // since it is an iterator, so we print *it, to get the value the iterator is pointing to
+}
+void explainMinElement(){
+    int arr[] = {7, 6, 5, 10, 9};
+    auto it = min_element(arr, arr+5); //It will always point to an iterator which is the min element
+    cout << *it << endl; // since it is an iterator, so we print *it, to get the value the iterator is pointing to
+}
+void explainReverse(){
+    int arr[] = {7, 6, 5, 10, 9};
+    reverse(arr, arr+5); //you can set a different range and reverse only the elements within that range too
+    for(int i=0; i<sizeof(arr)/sizeof(arr[0]); i++){ //or just put 5 yknow cause it's size is 5, why are you making this difficult for yourself
+        cout << arr[i] <<" ";//reverses array without sorting it
+    }
+    cout << endl;
+}
+void explainPow(){
+    int x = pow(4, 2);
+    cout << x << endl;
+}
+
+bool internalComparator1(int el1, int el2){
+    if(el1 < el2) return false;// so we can reverse it using this
+    return true;//can do the reverse to get the normal result too
+}
+void explainComparator1(){
+    //el1 is 5
+    //el2 is 6
+    //internal comparator that takes el1 and el2
+    //and tells you if el1 should be before elf2 or not 
+    //true if it should be, false if not
+    int arr[] = {5, 6, 1, 4};
+    sort(arr, arr+4);
+    for(int i = 0; i<4; i++){
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    sort(arr, arr+4, internalComparator1);
+    for(int i = 0; i<4; i++){
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    
+} 
+
+bool internalComparator(pair<int, int> el1, pair<int, int> el2){
+    if(el1.second > el2.second) return true;
+    if(el1.second < el2.second) return false;
+    if(el1.first < el2.first) return true;
+    return false;
+}
+void explainComparator(){
+    pair<int, int> arr[] = {{1, 6}, {1, 5}, {2, 6}, {2, 9}, {3, 9}};
+    //sort it according to
+    //the second element
+    // {2, 9}, {3, 9}, {1, 6}, {2, 6}, {1, 5}
+
+    //directly sorting it using the sort function we get it sorted according to the first element
+    cout << endl;
+    
+    sort(arr, arr+5, internalComparator);
+    for(int i = 0; i<5; i++){
+        cout << "{" << arr[i].first << ", " << arr[i].second << "} ";
+    }
+    cout << endl;
 }
 
 int main(){
-    explainSort();
+    explainComparator();
     return 0;
 }
