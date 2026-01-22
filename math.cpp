@@ -31,8 +31,20 @@ int odd_count(int x){
     string str_n = to_string(x);
     int od=0;
     for(char c: str_n){
-        int a = c-'0';
+        int a = c - '0';
         if(a%2!=0){
+            od++;
+        }
+    }
+    return od;
+}
+
+int odd_count1(int x){
+    int od=0;
+    while(x>0){
+        int y = x%10;
+        x=x/10;
+        if(y%2!=0){
             od++;
         }
     }
@@ -46,5 +58,7 @@ int main(){
     // cout << digits(x) << endl;
     // cout << log_digits(x);
     cout << odd_count(x);
+    cout << endl;
+    cout << odd_count1(x);
     return 0;
 }
