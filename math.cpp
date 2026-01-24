@@ -107,7 +107,7 @@ int largestDigit1(int n) {
     return max;
 }
 
-int largestDigit(int n) {
+int largestDigit0(int n) {
     string str = to_string(n);
     int max = str[0]-'0';
     for(int i = 0; i < str.length(); i++){
@@ -117,6 +117,27 @@ int largestDigit(int n) {
         }
     }
     return max;
+}
+
+int largestDigit(int n){
+    int max = 0;
+    while(n>0){
+        if(max<n%10){
+            max = n%10;
+            if(max==9) return 9;
+        }
+        n/=10;
+    }
+    return max;
+}
+
+int factorial(int n){
+    int res = 1;
+    if(n==0) return 1;
+    for(int i = n; i>0; i--){
+        res *= i;
+    }
+    return res;
 }
 
 int main()
@@ -134,7 +155,9 @@ int main()
     // cout << endl;
     // cout << isPalindrome(x);
     // cout << endl;
-    cout << largestDigit(x);
+    // cout << largestDigit(x);
+    // cout << endl;
+    cout << factorial(x);
     cout << endl;
 
     return 0;
