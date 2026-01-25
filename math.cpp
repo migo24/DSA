@@ -210,11 +210,43 @@ bool isArmstrong1(int n) {
         return count;
     }
 
+    int GCD(int n1, int n2){
+        int gcd;
+        int greater = max(n1, n2);
+        for(int i = 1; i<=greater; i++){
+            if(n1%i==0 && n2%i==0){
+                gcd = i;
+            }
+        }
+        return gcd;
+    }
+
+    int LCM(int n1,int n2) {
+        int greater = max(n1, n2);
+        for(int i = greater; i <= (n1*n2); i=i+greater){
+            if(i%n1==0 && i%n2==0){
+                return i;
+            }
+        }
+    }
+
+    vector<int> divisors(int n){
+        vector<int> div;
+        for(int i=1; i<=n; i++){
+            if(n%i==0){
+                div.push_back(i);
+            }
+        }
+        return div;
+    }
+
 int main()
 {
-    int x;
-    cout << "Enter the number: ";
+    int x, y;
+    cout << "Enter the first variable: ";
     cin >> x;
+    cout << "Enter the second variable: ";
+    cin >> y;
     // cout << digits(x) << endl;
     // cout << log_digits(x);
     // cout << odd_count(x);
@@ -239,7 +271,11 @@ int main()
     // cout << endl;
     // cout << primeUptoN1(x);
     // cout << endl;
-    
+    // cout << GCD(x, y);
+    // cout << endl;
+    cout << LCM(x, y);
+    cout << endl;
+
 
     return 0;
 }   
