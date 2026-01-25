@@ -140,6 +140,76 @@ int factorial(int n){
     return res;
 }
 
+bool isArmstrong1(int n) {
+        int dup1 = n;
+        int dup2 = n;
+        int rai = 0;
+        int sum = 0;
+        if(n==0){
+            return false;
+        }
+        while(dup1>0){
+            dup1/=10;
+            rai++;
+        }
+        while(dup2>0){
+            sum = sum + pow((dup2%10), rai);
+            dup2 /= 10;
+        }
+        if(n==sum){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    bool isPerfect(int n) {
+        int sum = 0;
+        for(int i=n-1; i>0; i--){
+            if(n%i==0){
+                sum = sum + i;
+            }
+        }
+        return (sum==n);
+    }
+
+    //you should not use ternary operator to return a value
+
+    bool isPrime(int n) {
+        for(int i = n-1; i>1; i--){
+            if(n%i==0){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    int primeUptoN1(int n) {
+        int count = 0;
+        for(int i=2; i<n+1; i++){
+            if(isPrime(i)){
+                count++;
+            }
+        }
+        return count;
+    }
+
+    int primeUptoN(int n) {
+        int count = 0;
+        for(int i = 2; i < n+1; i++){\
+            bool x = true;
+            for(int j=2; j<i; j++){
+                if(i%j==0){
+                    x = false;
+                }
+            }
+            if(x==true){
+                count++;
+            }
+        }
+        return count;
+    }
+
 int main()
 {
     int x;
@@ -157,8 +227,19 @@ int main()
     // cout << endl;
     // cout << largestDigit(x);
     // cout << endl;
-    cout << factorial(x);
-    cout << endl;
+    // cout << factorial(x);
+    // cout << endl;
+    // cout << isArmstrong1(x);
+    // cout << endl;
+    // cout << isPerfect(x);
+    // cout << endl;
+    // cout << isPrime(x);
+    // cout << endl;
+    // cout << primeUptoN(x);
+    // cout << endl;
+    // cout << primeUptoN1(x);
+    // cout << endl;
+    
 
     return 0;
-}
+}   
