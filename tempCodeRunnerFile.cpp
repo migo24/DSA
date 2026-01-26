@@ -1,2 +1,2 @@
-cout << isPrime(x);
+cout << GCD2(x, y);
     // cout << endl;
