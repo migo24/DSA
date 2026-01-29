@@ -1,11 +1,9 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-
 class Solution{
     public:
-
-        void reverseString(vector<char>& s){
+        void reverseString(string& s){
 			int n = s.size();
 			for(int i = 0; i < n/2; i++){
 				char temp = s[i];
@@ -14,21 +12,30 @@ class Solution{
 			}
 		}
 
+        bool palindromeCheck(string& s){
+			//your code goes here
+			for(int i = 0; i < s.size()/2; i++){
+				if(s[i]!=s[s.size()-i-1]) return false;
+			}
+			return true;
+		}
+
 };
 
 int main(){
-     string input;
+    string n;
     cout << "Enter the string: ";
-    getline(cin, input);
-
-    vector<char> n(input.begin(), input.end());
+    cin >> n;
 
     Solution obj;
+
     obj.reverseString(n);
 
-    cout << "Reversed string: ";
-    for (char c : n) cout << c;
-    cout << endl;
+    cout << n << endl;
+
+    bool pal = obj.palindromeCheck(n);
+
+    cout << pal;
 
     return 0;
 }
