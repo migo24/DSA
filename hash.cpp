@@ -42,3 +42,5 @@ int main(){
 // fixed it
 
 //nice
+
+//also do charachter hashing

@@ -667,7 +667,7 @@ void explainMap()
     cout << (*it).first << "->" << (*it).second << endl; // map.find() is an iterator, so a *it will give us a value which has a pair (and we put it in a () cause syntax, don't look too much into it), so we get it's first.
 
     auto i = mpp.find(5);
-    if (i == mpp.end())
+    if (i == mpp.end()) // what is this??
     {
         cout << "not found" << endl;
     }
@@ -923,6 +923,8 @@ void explainComparator()
 
 int main()
 {
-    explainComparator();
+    explainMap();
+    explainUnorderedMap();
+    explainMultiMap();
     return 0;
 }
