@@ -121,7 +121,7 @@ void explainVector()
 
     cout << endl;
 
-    // to take a subset of another vector, define the range you wnat, like this:
+    // to take a subset of another vector, define the range you want, like this:
     vector<int> dupVec2(vec2.begin() + 1, vec2.end());
     for (auto i : dupVec2)
     {
