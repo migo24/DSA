@@ -61,6 +61,25 @@ public:
         }
         return el_2;
     }
+
+    int sumHighestAndLowestFrequency(vector<int>& nums){
+        unordered_map<int, int> hash;
+        for(int i = 0; i < nums.size(); i++){
+            hash[nums[i]]++;
+        }
+
+        int max = 1;
+        for(auto it: hash){
+            int freq = it.second;
+            if(max<freq) max = freq;
+        }
+        int min = max;
+        for(auto it: hash){
+            int freq = it.second;
+            if(min>freq) min = freq;
+        }
+        return min+max;
+    }
 };
 
 int main() {
@@ -77,9 +96,11 @@ int main() {
     Solution sol;
     int result1 = sol.mostFrequentElement(nums);
     int result2 = sol.secondMostFrequentElement(nums);
+    int result3 = sol.sumHighestAndLowestFrequency(nums);
 
     cout << "Most frequent element is: " << result1 << endl;
     cout << "Second most frequent element is: " << result2 << endl;
+    cout << "Sum of maximum and minimum freqencies is: " << result3 << endl;
 
     return 0;
 }
