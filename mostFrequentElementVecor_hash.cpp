@@ -81,6 +81,19 @@ public:
         return min+max;
     }
 
+    int sumHighestAndLowestFrequency2(vector<int>& nums){
+        unordered_map<int, int> hash;
+        for(int i = 0; i< nums.size(); i++){
+            hash[nums[i]]++;
+        }
+        int maxi = 0; int mini = nums.size();
+        for(auto it: hash){
+            maxi = max(maxi, freq);
+            mini = min(mini, freq);
+        }
+        return maxi+mini;
+    }
+
     int secondMostFrequentElement2(vector<int>& nums){
         unordered_map<int, int> hash = {0};
 
@@ -101,6 +114,10 @@ public:
                 count2 = count1;
                 el1 = el;
                 count1 = count;
+            }
+            else if(count < count1 && count > count2){
+                el2 = el;
+                count2 = count;
             }
             else if(count == count1 && el<el1){
                 el1 = el;
@@ -132,11 +149,13 @@ int main() {
     int result2 = sol.secondMostFrequentElement(nums);
     int result22 = sol.secondMostFrequentElement2(nums);
     int result3 = sol.sumHighestAndLowestFrequency(nums);
+    int result33 = sol.sumHighestAndLowestFrequency2(nums);
 
     cout << "Most frequent element is: " << result1 << endl;
     cout << "Second most frequent element is: " << result2 << endl;
+    cout << "Second most frequent element is: " << result22 << endl;
     cout << "Sum of maximum and minimum freqencies is: " << result3 << endl;
-    cout << "Sum of maximum and minimum freqencies is: " << result22 << endl;
+    cout << "Sum of maximum and minimum freqencies is: " << result33 << endl;
 
     return 0;
 }
