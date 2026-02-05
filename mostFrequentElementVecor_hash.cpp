@@ -80,6 +80,40 @@ public:
         }
         return min+max;
     }
+
+    int secondMostFrequentElement2(vector<int>& nums){
+        unordered_map<int, int> hash = {0};
+
+        for(int i = 0; i < nums.size(); i++){
+            hash[nums[i]]++;
+        }
+
+        int el1 = -1;
+        int el2 = -1;
+        int count1 = 0;
+        int count2 = 0;
+
+        for(auto it: hash){
+            int el = it.first;
+            int count = it.second;
+            if(count > count1){
+                el2 = el1;
+                count2 = count1;
+                el1 = el;
+                count1 = count;
+            }
+            else if(count == count1 && el<el1){
+                el1 = el;
+            }
+            else if(count == count2 && el<el2){
+                el2 = el;
+            }
+        }
+        
+        return el2;
+
+        //something is wrong
+    }
 };
 
 int main() {
@@ -96,11 +130,13 @@ int main() {
     Solution sol;
     int result1 = sol.mostFrequentElement(nums);
     int result2 = sol.secondMostFrequentElement(nums);
+    int result22 = sol.secondMostFrequentElement2(nums);
     int result3 = sol.sumHighestAndLowestFrequency(nums);
 
     cout << "Most frequent element is: " << result1 << endl;
     cout << "Second most frequent element is: " << result2 << endl;
     cout << "Sum of maximum and minimum freqencies is: " << result3 << endl;
+    cout << "Sum of maximum and minimum freqencies is: " << result22 << endl;
 
     return 0;
 }
