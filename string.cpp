@@ -20,6 +20,31 @@ class Solution{
 			return true;
 		}
 
+		string largeOddNum(string& s){
+			int pos = s.find_first_of('0');
+			string str = s.substr(pos);
+			for(int i = str.length()-1; i >= 0; i--){
+				int x = str[i] - '0';
+				if(x%2!=0){
+					return str.substr(0, i+1);
+				}
+			}
+			return "";
+			//bad code not accepted do again
+
+			/*
+			terminate called after throwing an instance of 'std::out_of_range'
+  what():  basic_string::substr: __pos (which is 18446744073709551615) > this->size() (which is 1)
+run.sh: line 1:     3 Aborted                 (core dumped) ./a.out
+
+*/
+
+/*
+terminate called after throwing an instance of 'std::out_of_range'
+  what():  basic_string::substr: __pos (which is 18446744073709551615) > this->size() (which is 6)
+*/
+		}
+
 };
 
 int main(){
@@ -36,6 +61,8 @@ int main(){
     bool pal = obj.palindromeCheck(n);
 
     cout << pal;
+
+	string max_odd = obj.largeOddNum(n);
 
     return 0;
 }
