@@ -57,6 +57,28 @@ terminate called after throwing an instance of 'std::out_of_range'
 			}
 			return "";
 		}
+		
+		string longestCommonPrefix(vector<string>& str){
+			//your code goes here
+            string prefix = str[0];
+
+            for(string it: str){
+                for(int i = 0; i < it.size(); i++){
+                    if(prefix.size()>it.size()){
+                        prefix = prefix.substr(0, it.size());
+                    }
+                    if (it[i]!=prefix[i]){
+                        prefix = prefix.substr(0, i);
+                        break;
+                    }
+                    if (prefix == ""){
+                        return "";
+                    }
+                }
+            }
+            return prefix;
+		}
+		//do this code again and write it by yourself, optimize it, and do it the other methods too (4 methods)
 
 };
 
@@ -78,8 +100,13 @@ int main(){
 
 	// string max_odd = obj.largeOddNum(n);
 
-	string max_odd1 = obj.largeOddNum1(n); //this one actually works!
-	cout << max_odd1;
+	// string max_odd1 = obj.largeOddNum1(n); //this one actually works!
+	// cout << max_odd1;
+
+	// string max_prefix = obj.longestCommonPrefix(n); //this one actually works!
+	// cout << max_prefix;
+
+	//woops cant do this different type of problem needs string array!
 
     return 0;
 }
