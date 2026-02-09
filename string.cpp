@@ -80,6 +80,22 @@ terminate called after throwing an instance of 'std::out_of_range'
 		}
 		//do this code again and write it by yourself, optimize it, and do it the other methods too (4 methods)
 
+		bool rotateString(string& s,string& goal){
+			//your code goes here
+			int s_s = s.length();
+			int goal_s = goal.length();
+			if(s_s!=goal_s) return false;
+			for(int i = 0; i < s_s; i++){
+				if(s==goal) return true;
+				char temp = s[0];
+				for (int j = 0; j < s_s-1; j++){
+					s[j] = s[j+1]; 
+				}
+				s[s_s-1] = temp;
+			}
+			return false;
+		}
+
 };
 
 
@@ -107,6 +123,8 @@ int main(){
 	// cout << max_prefix;
 
 	//woops cant do this different type of problem needs string array!
+
+	//bool rot_str = obj.rotateString(s, goal);//first define s and goal for this
 
     return 0;
 }
