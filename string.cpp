@@ -96,6 +96,19 @@ terminate called after throwing an instance of 'std::out_of_range'
 			return false;
 		}
 
+		bool anagramStrings(string& s,string t){
+			//your code goes here
+			if(s.length()!=t.length()) return false;
+			for(int i = 0; i < s.length(); i++){
+				for(int j = 0; j < t.length(); j++){
+					if(s[i]==t[j]){ t.erase(j, 1); 
+					break;}
+				}
+			}
+			if(t=="") {return true;}
+			else {return false;}
+		}
+
 };
 
 
