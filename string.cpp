@@ -109,6 +109,25 @@ terminate called after throwing an instance of 'std::out_of_range'
 			else {return false;}
 		}
 
+		vector<char> frequencySort(string& s){
+			//your code goes here
+			vector<char> sorted_char = {};
+			vector<int> freq(26, 0);
+
+			for(char c: s){
+				freq[c-'a']++;
+			}
+
+			while(*max_element(freq.begin(), freq.end()) > 0){
+				auto max_c = max_element(freq.begin(), freq.end());
+				int max_index = distance(freq.begin(), max_c);
+				sorted_char.push_back(char(max_index+'a'));
+				freq[max_index] = 0;
+			}
+
+			return sorted_char;
+		}
+
 };
 
 
