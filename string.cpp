@@ -128,6 +128,27 @@ terminate called after throwing an instance of 'std::out_of_range'
 			return sorted_char;
 		}
 
+		bool isIsomorphic(string s, string t){
+
+			if(s.length() != t.length()) return false;
+
+			vector<pair<char, char>> mapping = {};
+
+			for(int i = 0; i < s.lenght(); i++){
+				char x = s[i];
+				char y = t[i];
+				
+				for(auto it: mapping){
+					if(it.first == x && it.second != y) return false;
+					if(it.second == y && it.first != x) return false;
+				}
+				
+				mapping.push_back({x, y});
+			}
+
+			return true;
+		}
+
 };
 
 
