@@ -35,6 +35,16 @@ class Solution{
 		//I really dont understand
 
 		// I need to study it again, cause I dont understand, plus, revise strings + OPTIMIZE!!!
+
+	
+		long long int factorial(int n){
+			//your code goes here
+			if(n==0) return 1;
+			return n*factorial(n-1);
+		}
+
+		//I still undersatand nothing about recursion, this is chatgpt, heat tail, return dont return, parameterised non parameterised, global, not b=global I just dont know I need to study this topic all over again
+
 };
 
 int main(){
@@ -49,7 +59,9 @@ int main(){
     int c = obj.NnumbersSum(x);
     int z = obj.numSum(x);
     int a = obj.print_N_2_1(x);
+    int b = obj.factorial(x);
     obj.tail_print_n_2_1(x, y);
     cout << c << endl;
     cout << z << endl;
+    cout << b << endl;
 }
