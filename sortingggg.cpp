@@ -12,8 +12,20 @@ class solution{
         int n = nums.size();
         for(int i = 0; i < n-1; i++){
             for(int j = 0; j < n-i-1; j++){
-                if(nums[j] < nums[j+1]) swap(nums[j], nums[j+1]);
+                if(nums[j] > nums[j+1]) swap(nums[j], nums[j+1]);
             }
+        }
+        return nums;
+    }
+
+    vector<int> selectionSort(vector<int> nums){
+        int n = nums.size();
+        for(int i = 0; i < n-1; i++){
+            int min = i;
+            for(int j = i; j < n; j++){
+                if(nums[j]<nums[min]) min = j;
+            }
+            swap(nums[min], nums[i]);
         }
         return nums;
     }
@@ -23,8 +35,15 @@ int main(){
     vector<int> x = {5,3,4,1,2};
     solution obj;
     vector<int> bub = obj.bubbleSort(x);
+    vector<int> sel = obj.selectionSort(x);
 
     for(auto it: bub){
+        cout << it << " ";
+    }
+
+    cout << endl;
+
+    for(auto it: sel){
         cout << it << " ";
     }
 
