@@ -10,6 +10,14 @@ class Solution{
 			if(N==0) return 0;
 			return N + NnumbersSum(N-1);
 		}
+
+		
+		int NnumbersSSum(int N){
+			//your code goes here
+			if(N==1) return 1;
+			return N+NnumbersSum(N-1);
+		}
+		//still dont understand it, I just did a bit of hit and trial and typed a bunch of iterations like a caveman. What even is recursion???
 		
 		// non parameterized recursion
 		int numSum(int n){
