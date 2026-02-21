@@ -20,6 +20,13 @@ class Solution{
         return n*fact_1(n-1);
     }
 
+    int sumOfN(int n){
+        if(n==1){
+            return 1;
+        }
+        return n+sumOfN(n-1);
+    }
+
 };
 
 int main(){
@@ -29,5 +36,7 @@ int main(){
     Solution obj;
     obj.nTo1(n);
     int fact = obj.fact_1(n);
-    cout << fact;
+    cout << "Factorial of " << n << " is: " << fact << endl;;
+    int sum = obj.sumOfN(n);
+    cout << "Sum of " << n << " numbers is: " << sum << endl;;
 }
