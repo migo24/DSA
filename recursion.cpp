@@ -53,6 +53,17 @@ class Solution{
 
 		//I still undersatand nothing about recursion, this is chatgpt, heat tail, return dont return, parameterised non parameterised, global, not b=global I just dont know I need to study this topic all over again
 
+		void printNto1(int n){
+
+			if(n==1){
+				cout << 1 << endl;
+				return;
+			}
+
+			cout << n << endl;
+			printNto1(n-1);
+		}
+
 };
 
 int main(){
@@ -69,7 +80,10 @@ int main(){
     int a = obj.print_N_2_1(x);
     int b = obj.factorial(x);
     obj.tail_print_n_2_1(x, y);
+    obj.print_N_2_1(x);
     cout << c << endl;
     cout << z << endl;
     cout << b << endl;
 }
+
+//this has gotten too confusing
