@@ -1,3 +1,1 @@
-cout << "Enter n: ";
-    // int n;
-    // cin >> n;
+    // cout << endl;

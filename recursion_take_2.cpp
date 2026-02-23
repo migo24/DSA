@@ -44,6 +44,20 @@ class Solution{
 			return last_ele+arraySum(nums);
 		}
 
+    
+		int arraySum2(vector<int>& nums){
+
+			int n = nums.size();
+			return arrSumRecursive(nums, n);
+		}
+
+	private:
+		int arrSumRecursive(vector<int>& nums, int n){
+
+			if(n==0) return 0;
+			return nums[n-1]+arrSumRecursive(nums, n-1);
+		}
+
 };
 
 int main(){
@@ -57,6 +71,11 @@ int main(){
     // cout << "Factorial of " << n << " is: " << fact << endl;
     // int sum = obj.sumOfN(n);
     // cout << "Sum of " << n << " numbers is: " << sum << endl;
-    int sum_vec = obj.arraySum1(nums);
-    cout << sum_vec;
+
+    // int sum_vec = obj.arraySum1(nums);
+
+    int sum_vec1 = obj.arraySum2(nums);
+    // cout << sum_vec;
+    // cout << endl;
+    cout <<sum_vec1;
 }
