@@ -51,12 +51,22 @@ class Solution{
 			return arrSumRecursive(nums, n);
 		}
 
+        vector<char> reverseString(vector<char> &s){
+            revStr(s, 0, s.size()-1);
+            return s;
+        }
+
 	private:
 		int arrSumRecursive(vector<int>& nums, int n){
 
 			if(n==0) return 0;
 			return nums[n-1]+arrSumRecursive(nums, n-1);
 		}
+        void revStr(vector<char>& s, int left, int right){
+            if(left>=right) return;
+            swap(s[left], s[right]);
+            revStr(s, left+1, right-1);
+        }
 
 };
 
@@ -64,7 +74,7 @@ int main(){
     // cout << "Enter n: ";
     // int n;
     // cin >> n;
-    vector<int> nums = {1,2,3,4,5,6};
+    // vector<int> nums = {1,2,3,4,5,6};
     Solution obj;
     // obj.nTo1(n);
     // int fact = obj.fact_1(n);
@@ -74,8 +84,12 @@ int main(){
 
     // int sum_vec = obj.arraySum1(nums);
 
-    int sum_vec1 = obj.arraySum2(nums);
-    // cout << sum_vec;
-    // cout << endl;
-    cout <<sum_vec1;
+    // int sum_vec1 = obj.arraySum2(nums);
+    // // cout << sum_vec;
+    // // cout << endl;
+    // cout <<sum_vec1;
+    vector<char> word = {'h', 'e', 'l', 'l', 'o'};
+    vector<char> w = obj.reverseString(word);
+    for(char c: w) cout << c;
+    
 }
