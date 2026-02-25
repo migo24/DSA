@@ -72,7 +72,19 @@ public:
         return palindromeCheckRecursive(s, 0, s.length() - 1);
     }
 
+    bool isPrime(int num){
+        if(num<=1) return false;
+        return isPrimeRec(num, num-1);
+    }
+
 private:
+    bool isPrimeRec(int num, int factor)
+    {
+        if(factor==1) return true;
+        if(num%factor==0) return false;
+        return isPrimeRec(num, factor-1);
+    }
+
     bool palindromeCheckRecursive(string &s, int left, int right)
     {
         if (left >= right)
@@ -123,6 +135,9 @@ int main()
     // for(char c: w) cout << c;
 
     string s = "hannah";
+    int num = 41;
+    bool primeOrNot = obj.isPrime(num);
+    cout << primeOrNot << endl;
     bool tf = obj.palindromeCheck(s);
     cout << tf;
 }
