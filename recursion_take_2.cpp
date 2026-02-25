@@ -1,76 +1,106 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-class Solution{
-    public:
-
-    void nTo1(int n){
-        if(n==1){
+class Solution
+{
+public:
+    void nTo1(int n)
+    {
+        if (n == 1)
+        {
             cout << 1 << endl;
             return;
         }
         cout << n << " ";
-        nTo1(n-1);
+        nTo1(n - 1);
     }
 
-    int fact_1(int n){
-        if(n==0){
+    int fact_1(int n)
+    {
+        if (n == 0)
+        {
             return 1;
         }
-        return n*fact_1(n-1);
+        return n * fact_1(n - 1);
     }
 
-    int sumOfN(int n){
-        if(n==1){
+    int sumOfN(int n)
+    {
+        if (n == 1)
+        {
             return 1;
         }
-        return n+sumOfN(n-1);
+        return n + sumOfN(n - 1);
     }
 
-    int arraySum(vector<int>& nums){
-			//your code goes here
-			int n = nums.size();
-			if(n==0) return 0;
-			int a = nums[n-1];
-			nums.pop_back();
-			return a+arraySum(nums);
-		}
+    int arraySum(vector<int> &nums)
+    {
+        // your code goes here
+        int n = nums.size();
+        if (n == 0)
+            return 0;
+        int a = nums[n - 1];
+        nums.pop_back();
+        return a + arraySum(nums);
+    }
 
-    int arraySum1(vector<int>& nums){
-			int n = nums.size();
-			if(n==0) return 0;
-			int last_ele = nums[n-1];
-			nums.pop_back();
-			return last_ele+arraySum(nums);
-		}
+    int arraySum1(vector<int> &nums)
+    {
+        int n = nums.size();
+        if (n == 0)
+            return 0;
+        int last_ele = nums[n - 1];
+        nums.pop_back();
+        return last_ele + arraySum(nums);
+    }
 
-    
-		int arraySum2(vector<int>& nums){
+    int arraySum2(vector<int> &nums)
+    {
 
-			int n = nums.size();
-			return arrSumRecursive(nums, n);
-		}
+        int n = nums.size();
+        return arrSumRecursive(nums, n);
+    }
 
-        vector<char> reverseString(vector<char> &s){
-            revStr(s, 0, s.size()-1);
-            return s;
-        }
+    vector<char> reverseString(vector<char> &s)
+    {
+        revStr(s, 0, s.size() - 1);
+        return s;
+    }
 
-	private:
-		int arrSumRecursive(vector<int>& nums, int n){
+    bool palindromeCheck(string &s)
+    {
+        return palindromeCheckRecursive(s, 0, s.length() - 1);
+    }
 
-			if(n==0) return 0;
-			return nums[n-1]+arrSumRecursive(nums, n-1);
-		}
-        void revStr(vector<char>& s, int left, int right){
-            if(left>=right) return;
-            swap(s[left], s[right]);
-            revStr(s, left+1, right-1);
-        }
+private:
+    bool palindromeCheckRecursive(string &s, int left, int right)
+    {
+        if (left >= right)
+            return true;
+        if (s[left] != s[right])
+            return false;
+        return palindromeCheckRecursive(s, left + 1, right - 1);
+    }
 
+    int arrSumRecursive(vector<int> &nums, int n)
+    {
+
+        if (n == 0)
+            return 0;
+        return nums[n - 1] + arrSumRecursive(nums, n - 1);
+    }
+
+    void revStr(vector<char> &s, int left, int right)
+    {
+        if (left >= right)
+            return;
+        swap(s[left], s[right]);
+        revStr(s, left + 1, right - 1);
+    }
 };
 
-int main(){
+int main()
+{
     // cout << "Enter n: ";
     // int n;
     // cin >> n;
@@ -84,12 +114,15 @@ int main(){
 
     // int sum_vec = obj.arraySum1(nums);
 
-    // int sum_vec1 = obj.arraySum2(nums);
-    // // cout << sum_vec;
-    // // cout << endl;
-    // cout <<sum_vec1;
-    vector<char> word = {'h', 'e', 'l', 'l', 'o'};
-    vector<char> w = obj.reverseString(word);
-    for(char c: w) cout << c;
-    
+    // // int sum_vec1 = obj.arraySum2(nums);
+    // // // cout << sum_vec;
+    // // // cout << endl;
+    // // cout <<sum_vec1;
+    // vector<char> word = {'h', 'e', 'l', 'l', 'o'};
+    // vector<char> w = obj.reverseString(word);
+    // for(char c: w) cout << c;
+
+    string s = "hannah";
+    bool tf = obj.palindromeCheck(s);
+    cout << tf;
 }
