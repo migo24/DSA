@@ -82,7 +82,18 @@ public:
         return nums;
     }
 
+    bool isSorted(vector<int>& nums){
+        if(nums.size() <= 1) return true;
+        return isSortedRec(nums, 0, 1);
+    }
+
 private:
+
+    bool isSortedRec(vector<int>& nums, int a, int b){
+        if(b==nums.size()) return true;
+        if(nums[a]>nums[b]) return false;
+        return isSortedRec(nums, a+1, b+1);
+    }
 
     void reverseArrayRec(vector<int>& nums, int left, int right){
         if(left>=right) return;
@@ -154,7 +165,10 @@ int main()
     // cout << tf;
 
     vector<int> nums = {1,2,3,4,5,6};
-    vector<int> revArr = obj.reverseArray(nums);
-    for(int i: revArr) cout << i << " ";
+    // vector<int> revArr = obj.reverseArray(nums);
+    // for(int i: revArr) cout << i << " ";
+
+    bool isSortedOrNot = obj.isSorted(nums);
+    cout << isSortedOrNot;
     
 }
