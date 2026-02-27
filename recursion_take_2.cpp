@@ -98,6 +98,11 @@ public:
         return addDigits(sum);
     }
 
+    int fib(int n){
+        if(n<=1) return n;
+        return fib(n-1)+fib(n-2);
+    }
+
 private:
 
     bool isSortedRec(vector<int>& nums, int a, int b){
@@ -182,7 +187,9 @@ int main()
     // bool isSortedOrNot = obj.isSorted(nums);
     // cout << isSortedOrNot;
 
-    int x = 2549;
-    int addedDigits = obj.addDigits(x);
-    cout << addedDigits;
+    // int x = 2549;
+    // int addedDigits = obj.addDigits(x);
+    // cout << addedDigits;
+
+    cout << obj.fib(8);
 }
