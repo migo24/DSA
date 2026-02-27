@@ -77,7 +77,19 @@ public:
         return isPrimeRec(num, num-1);
     }
 
+    vector<int> reverseArray(vector<int>& nums){
+        reverseArrayRec(nums, 0, nums.size()-1);
+        return nums;
+    }
+
 private:
+
+    void reverseArrayRec(vector<int>& nums, int left, int right){
+        if(left>=right) return;
+        swap(nums[left], nums[right]);
+        reverseArrayRec(nums, left+1, right-1);
+    }
+
     bool isPrimeRec(int num, int factor)
     {
         if(factor==1) return true;
@@ -134,10 +146,15 @@ int main()
     // vector<char> w = obj.reverseString(word);
     // for(char c: w) cout << c;
 
-    string s = "hannah";
-    int num = 41;
-    bool primeOrNot = obj.isPrime(num);
-    cout << primeOrNot << endl;
-    bool tf = obj.palindromeCheck(s);
-    cout << tf;
+    // string s = "hannah";
+    // int num = 41;
+    // bool primeOrNot = obj.isPrime(num);
+    // cout << primeOrNot << endl;
+    // bool tf = obj.palindromeCheck(s);
+    // cout << tf;
+
+    vector<int> nums = {1,2,3,4,5,6};
+    vector<int> revArr = obj.reverseArray(nums);
+    for(int i: revArr) cout << i << " ";
+    
 }
