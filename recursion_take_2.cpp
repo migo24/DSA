@@ -87,6 +87,17 @@ public:
         return isSortedRec(nums, 0, 1);
     }
 
+    int addDigits(int num){
+        if(num < 10) return num;
+        int sum = 0;
+        while(num >= 1){
+            int a = num%10;
+            sum = sum+a;
+            num /= 10;
+        }
+        return addDigits(sum);
+    }
+
 private:
 
     bool isSortedRec(vector<int>& nums, int a, int b){
@@ -164,11 +175,14 @@ int main()
     // bool tf = obj.palindromeCheck(s);
     // cout << tf;
 
-    vector<int> nums = {1,2,3,4,5,6};
-    // vector<int> revArr = obj.reverseArray(nums);
-    // for(int i: revArr) cout << i << " ";
+    // vector<int> nums = {1,2,3,4,5,6};
+    // // vector<int> revArr = obj.reverseArray(nums);
+    // // for(int i: revArr) cout << i << " ";
 
-    bool isSortedOrNot = obj.isSorted(nums);
-    cout << isSortedOrNot;
-    
+    // bool isSortedOrNot = obj.isSorted(nums);
+    // cout << isSortedOrNot;
+
+    int x = 2549;
+    int addedDigits = obj.addDigits(x);
+    cout << addedDigits;
 }
