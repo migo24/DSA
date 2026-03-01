@@ -45,18 +45,81 @@ public:
         return nums;
     }
 
-    vector<int> insertionSort(vector<int> nums){
+    vector<int> insertionSort(vector<int> nums)
+    {
         int n = nums.size();
-        for(int i = 1; i < n; i++){
+        for (int i = 1; i < n; i++)
+        {
             int x = nums[i];
-            int j = i-1;
-            while(j>=0 && nums[j]>x){
-                nums[j+1] = nums[j];
+            int j = i - 1;
+            while (j >= 0 && nums[j] > x)
+            {
+                nums[j + 1] = nums[j];
                 j--;
             }
-            nums[j+1] = x;
+            nums[j + 1] = x;
         }
         return nums;
+    }
+
+    vector<int> mergeSort(vector<int> &nums)
+    {
+        int n = nums.size();
+        if (n <= 1)
+            return nums;
+        auto middle = nums.begin() + n / 2;
+        vector<int> vecLeft(nums.begin(), middle);
+        vector<int> vecRight(middle, nums.end());
+
+        vector<int> left = mergeSort(vecLeft);
+        // for(int i = 0; i < left.size()-1; i++){
+        //     if(left[i]>left[i+1]) swap(left[i], left[i+1]);
+        // }
+        vector<int> right = mergeSort(vecRight);
+        // for(int i = 0; i < right.size()-1; i++){
+        //     if(right[i]>right[i+1]) swap(right[i], right[i+1]);
+        // }
+        vector<int> sorted_vec;
+        int i = 0;
+        int j = 0;
+        while (i < left.size() && j < right.size())
+        {
+            if (left[i] < right[j])
+            {
+                sorted_vec.push_back(left[i]);
+                i++;
+            }
+            else
+            {
+                sorted_vec.push_back(right[j]);
+                j++;
+            }
+        }
+
+        while (i < left.size())
+        {
+            sorted_vec.push_back(left[i]);
+            i++;
+        }
+
+        while (j < right.size())
+        {
+            sorted_vec.push_back(right[j]);
+            j++;
+        }
+        // for(int i = 0; i < left.size(); i++){
+        //     if(left[i]>right[i]) {sorted_vec.push_back(right[i]);
+        //     sorted_vec.push_back(left[i]);}
+        //     else{
+        //         sorted_vec.push_back(left[i]);
+        //         sorted_vec.push_back(right[i]);
+        //     }
+        // }
+
+        return sorted_vec;
+
+        //Honestly? What did I even do here? What is this? This is the garbage I wrote then tried to fix using AI and I even I don't understand it.
+        //I will try again tomorrow, cause there is not enough time today. I will understand this shit. whatever it may be.
     }
 };
 
