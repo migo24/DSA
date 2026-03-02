@@ -72,13 +72,8 @@ public:
         vector<int> vecRight(middle, nums.end());
 
         vector<int> left = mergeSort(vecLeft);
-        // for(int i = 0; i < left.size()-1; i++){
-        //     if(left[i]>left[i+1]) swap(left[i], left[i+1]);
-        // }
         vector<int> right = mergeSort(vecRight);
-        // for(int i = 0; i < right.size()-1; i++){
-        //     if(right[i]>right[i+1]) swap(right[i], right[i+1]);
-        // }
+
         vector<int> sorted_vec;
         int i = 0;
         int j = 0;
@@ -107,19 +102,8 @@ public:
             sorted_vec.push_back(right[j]);
             j++;
         }
-        // for(int i = 0; i < left.size(); i++){
-        //     if(left[i]>right[i]) {sorted_vec.push_back(right[i]);
-        //     sorted_vec.push_back(left[i]);}
-        //     else{
-        //         sorted_vec.push_back(left[i]);
-        //         sorted_vec.push_back(right[i]);
-        //     }
-        // }
 
         return sorted_vec;
-
-        //Honestly? What did I even do here? What is this? This is the garbage I wrote then tried to fix using AI and I even I don't understand it.
-        //I will try again tomorrow, cause there is not enough time today. I will understand this shit. whatever it may be.
     }
 };
 
@@ -130,6 +114,7 @@ int main()
     vector<int> bub = obj.bubbleSort(x);
     vector<int> sel = obj.selectionSort(x);
     vector<int> ins = obj.insertionSort(x);
+    vector<int> mer = obj.mergeSort(x);
 
     for (auto it : bub)
     {
@@ -146,6 +131,13 @@ int main()
     cout << endl;
 
     for (auto it : ins)
+    {
+        cout << it << " ";
+    }
+
+    cout << endl;
+
+    for (auto it : mer)
     {
         cout << it << " ";
     }
