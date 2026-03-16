@@ -81,7 +81,8 @@ int main()
     vector<int> arr = {8, 5, 9, 7, 4, 6, 3, 1, 2};
     int n = arr.size() - 1;
 
-    mergeSort(arr, 0, n);
+    // mergeSort(arr, 0, n);
+    quickSort(arr, 0, n);
 
     for(int it: arr){
         cout << it << " ";
