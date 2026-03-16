@@ -33,7 +33,7 @@ void merge(vector<int>& arr, int st, int mid, int end){
 void mergeSort(vector<int>& arr, int st, int end)
 {
     int mid = st + (end - st) / 2;
-    if (st < mid)
+    if (st < end)//?? it was st<mid -> returned wonky result?? changing to st<end
     {
         mergeSort(arr, st, mid);
         mergeSort(arr, mid + 1, end);
@@ -81,8 +81,8 @@ int main()
     vector<int> arr = {8, 5, 9, 7, 4, 6, 3, 1, 2};
     int n = arr.size() - 1;
 
-    // mergeSort(arr, 0, n);
-    quickSort(arr, 0, n);
+    mergeSort(arr, 0, n);
+    // quickSort(arr, 0, n);
 
     for(int it: arr){
         cout << it << " ";
@@ -90,3 +90,5 @@ int main()
 
     return 0;
 }
+
+//chatgpt and u dersanding and revision

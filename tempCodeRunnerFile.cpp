@@ -1,1 +1,2 @@
-    // cout << endl;
+
+    mergeSort(arr, 0, n);
