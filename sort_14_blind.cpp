@@ -41,6 +41,41 @@ void mergeSort(vector<int>& arr, int st, int end)
     }
 }
 
+//SHIT I FORGOT QUICKSORT
+
+// void quickSort(vector<int>& arr, int st, int pivot, int mid){
+//     int compared = st;
+//     int idx = 
+// }
+
+//this is copied after revew, try again tmrw
+
+int pivot(vector<int> &arr, int st, int end)
+{
+    int pivot = st - 1;
+    int idx = st;
+    for (int i = st; i < end; i++)
+    {
+        if (arr[end] > arr[i])
+        {
+            pivot++;
+            swap(arr[i], arr[pivot]);
+        }
+    }
+    pivot++;
+    swap(arr[end], arr[pivot]);
+    return pivot;
+}
+void quickSort(vector<int> &arr, int st, int end)
+{
+    if (st < end)
+    {
+        int pivotIdx = pivot(arr, st, end);
+        quickSort(arr, st, pivotIdx-1);
+        quickSort(arr, pivotIdx + 1, end);
+    }
+}
+
 int main()
 {
     vector<int> arr = {8, 5, 9, 7, 4, 6, 3, 1, 2};
